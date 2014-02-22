@@ -1,0 +1,9 @@
+[11-Aug-2013 14:53:53 Asia/Calcutta] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/aprogift/public_html/v3_/fb_functions.php on line 7
+[11-Aug-2013 14:54:27 Asia/Calcutta] PHP Parse error:  syntax error, unexpected T_RETURN in /home/aprogift/public_html/v3_/fb_functions.php on line 12
+[11-Aug-2013 14:55:01 Asia/Calcutta] PHP Warning:  file_get_contents(https://graph.facebook.com//likes?limit=5000&amp;access_token=CAAHGJxmstW8BAGTfR8ypNU88SRb2dlZCshzF7sjGmT0urMb9HZConrKj5y3JWkZAZA8l9N4hZB566l8yyaRCpMHahfrqOYaOPt4qA9BYzM1u6AYnsoYFSnhbvgnwNUVboWUyWNR7DOLwnfdQ9hFoZCH7whZBIn6d6QZD) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.0 400 Bad Request
+ in /home/aprogift/public_html/v3_/fb_functions.php on line 11
+[11-Aug-2013 14:56:08 Asia/Calcutta] PHP Warning:  file_get_contents(https://graph.facebook.com//likes?limit=5000&amp;access_token=CAAHGJxmstW8BAGTfR8ypNU88SRb2dlZCshzF7sjGmT0urMb9HZConrKj5y3JWkZAZA8l9N4hZB566l8yyaRCpMHahfrqOYaOPt4qA9BYzM1u6AYnsoYFSnhbvgnwNUVboWUyWNR7DOLwnfdQ9hFoZCH7whZBIn6d6QZD) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.0 400 Bad Request
+ in /home/aprogift/public_html/v3_/fb_functions.php on line 12
+[11-Aug-2013 14:56:50 Asia/Calcutta] PHP Warning:  file_get_contents(https://graph.facebook.com//likes?limit=5000&amp;access_token=CAAHGJxmstW8BAGTfR8ypNU88SRb2dlZCshzF7sjGmT0urMb9HZConrKj5y3JWkZAZA8l9N4hZB566l8yyaRCpMHahfrqOYaOPt4qA9BYzM1u6AYnsoYFSnhbvgnwNUVboWUyWNR7DOLwnfdQ9hFoZCH7whZBIn6d6QZD) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.0 400 Bad Request
+ in /home/aprogift/public_html/v3_/fb_functions.php on line 12
+[11-Aug-2013 15:01:16 Asia/Calcutta] PHP Fatal error:  Cannot use object of type stdClass as array in /home/aprogift/public_html/v3_/fb_functions.php on line 12

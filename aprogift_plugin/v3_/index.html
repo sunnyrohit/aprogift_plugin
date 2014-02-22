@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>E-Commerce</title>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/styles_z1.css"/>
+		<link type="text/css" href="js/friend-selector/jquery.friend.selector-1.2.css" rel="stylesheet" />
+		
+		<script type="text/javascript" src='js/jquery.min.js'></script>
+		<script type="text/javascript" src='bootstrap/js/bootstrap.min.js'></script>
+		<script type="text/javascript" src="js/friend-selector/jquery.friend.selector-1.2.min.js"></script>
+		<script type="text/javascript" src='js/display.js'></script>
+		<script type="text/javascript" src='js/fbStuff.js'></script>
+		<script type="text/javascript" src='js/authentication.js'></script>
+		<script type="text/javascript" src='js/main.js'></script>		
+		
+	</head>
+	<body>
+	
+	<script type="text/javascript">
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '499346213483887', channelUrl : '//www.aprogift.com/fbEmail/channel.html',
+				status : true, cookie : true, xfbml : true
+			});
+			
+			
+			FB.Event.subscribe('auth.authResponseChange', function(response) {
+				if (response.status === 'connected') {
+						fbAccessToken = response.authResponse.accessToken;
+					if (clickedOnFacebook) {
+						goToCard2();
+					} else {
+						$(".facebook-login-signup").off("click");
+						$(".facebook-login-signup").on("click", function() {
+							goToCard2();
+						});
+					}
+
+				}
+				else
+					z_fblogin();
+			});
+		};
+
+		(function(d){
+			var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement('script'); js.id = id; js.async = true;
+			js.src = "//connect.facebook.net/en_US/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
+
+	</script>
+	
+	<div class="container">
+	<div class="row" style='margin-top:2.3em'>
+		<div id='main' class="span10">
+			<div class="cards displayed" id='card1'>
+				<div class='trigger btn btn-success' id="login-trigger">LOGIN <span>&#x25B2;</span></div>
+				<div class="z_container" id="login-container" style='display:block'>
+					<img class='facebook-login-signup' src="img/facebook-logo-2.png"/><br/>
+					<h3>OR</h3>
+					<form onSubmit='validateNonFbLogin(this);return false'>
+						<input class='input-large' type=text name='username' placeholder='Jabong Username'><br/>
+						<input class='input-large' type=password name='password' placeholder='Password'><br/>
+						<input type=submit class='btn btn-primary' value='Login'><br/>
+					</form>
+				</div>
+				<br/>
+				<div class='trigger btn btn-success' id="signup-trigger">SIGNUP <span>&#x25B2;</span></div>
+				<div class="z_container" id="signup-container">
+					<img class='facebook-login-signup' src="img/facebook-logo-2.png"/><br/>
+					<h3>OR</h3>
+					<form onSubmit="alert('TODO');return false">
+						<input class='input-large' type=text name='username' placeholder='Email'><br/>
+						<input class='input-large' type=password name='password' placeholder='Password'><br/>
+						<input class='input-large' type=password name='confirm-password' placeholder='Confirm Password'><br/>
+						<input type=submit class='btn btn-primary' value='Signup'><br/>
+					</form>
+				</div>
+			</div>
+			
+			<div class="cards" id='card2-fb'>
+				<div style='float:left'>
+					
+					<form onSubmit='return false;'>
+						
+						<img id=recipient-fb-image src="img/default-fb.jpg" /><a href='#' onClick="getRecommendations();return false"><span style='font-size:0.7em' title='Open Network Tab in Chrome and analyse request response'>Send Network Req.</span></a><br/>
+						<input type="text" name='recipient-name' placeholder="Recipient's Name" style='width:19em;margin:0;font-weight:bold'/>
+						<img src="img/facebook_icon_medium.png" id='fb-button'/> 
+						<br/>
+						<input type="text" name='recipient-email' placeholder="Recipient's Email" style='width:19em;margin:0;font-weight:bold'/>
+						<br/><br/>
+						<input type="hidden" name='recipient-fb-id' value=''/>
+						<input type="hidden" name='organizer-fb-id' value=''/>
+						<input type="hidden" name='organizer-email' value=''/>
+						
+						<label style='font-size:1.2em;margin-left:0.2em;'> Occasion </label>
+						<select name='occassion' style='font-weight:bold'>
+							<option>Birthday</option>  
+							<option>Anniversary</option>
+							<option>Graduation</option>  
+							<option>Farewell</option>
+							<option>Job promotion</option>
+							<option value='Valentine'>Valentine's</option>
+							<option>Date</option>
+							<option>Wedding</option>  
+							<option>House Warming</option>
+							<option value=''> Just felt like gifting </option>
+						</select>
+						<br/><br/><br/>
+						<div class='btn btn-success' onClick="alert('TODO')">Choose Gift And Invite Friends <i class="icon-arrow-right icon-white"></i></div>
+					</form>
+				</div>
+				
+				
+				<div style='float:right;'>
+					<label style='font-size:1.2em;text-align:center;font-weight:bold;letter-spacing:0.14em'>Upcoming Birthdays</label>
+					<div id="upcoming-birthdays-container" >
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="cards" id='card2-non-fb'>
+				<br/>
+				<form onSubmit='return false;'>
+					<div style='float:left'>
+						<input type="text" name='recipient-name' placeholder="Recipient's Name"/><br/>
+						<input type="text" name='recipient-email' placeholder="Recipient's Email"/><br/><br/>
+					</div>
+					<div style='float:right'>
+						<label style='font-size:1.4em'> Occasion </label>
+						<select name='occassion'>
+							<option>Birthday</option>  
+							<option>Anniversary</option>
+							<option>Graduation</option>  
+							<option>Farewell</option>
+							<option>Job promotion</option>
+							<option value='Valentine'>Valentine's</option>
+							<option>Date</option>
+							<option>Wedding</option>  
+							<option>House Warming</option>
+							<option value=''> Just felt like gifting </option>
+						</select>
+					</div>
+					<div class="clear"></div>
+						<br/><br/><br/><br/><br/><br/><br/><br/>
+						<div style='margin:0 auto;text-align:center'>
+							<div onClick="alert('TODO')" class='btn btn-success'>Choose Gift And Invite Friends <i class="icon-arrow-right icon-white"></i></div>
+						</div>
+					</form>
+			</div>		
+		</div>
+	</div>
+	</div>
+	
+	
+	</body>
+</html>

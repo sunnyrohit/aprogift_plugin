@@ -1,0 +1,5 @@
+<ifmodule mod_security.c>
+<files recommendations.php>
+SecFilterScanPOST Off
+</files>
+</ifmodule>
